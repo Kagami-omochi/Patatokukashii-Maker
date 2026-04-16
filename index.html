@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パタトクカシーメーカー</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f2f5; }
+        .container { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { text-align: center; color: #333; margin-bottom: 1.5rem; }
+        .input-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: #555; }
+        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+        button { width: 100%; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+        button:hover { background-color: #0056b3; }
+        .result-area { margin-top: 1.5rem; padding: 1rem; background: #e9ecef; border-radius: 6px; text-align: center; min-height: 1.5rem; }
+        #result { font-weight: bold; font-size: 1.2rem; color: #d63384; word-break: break-all; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>パタトクカシーメーカー</h2>
+    
+    <div class="input-group">
+        <label for="str1">言葉 1</label>
+        <input type="text" id="str1" placeholder="例：パトカー">
+    </div>
+    
+    <div class="input-group">
+        <label for="str2">言葉 2</label>
+        <input type="text" id="str2" placeholder="例：タクシー">
+    </div>
+    
+    <button onclick="generate()">混ぜる！</button>
+    
+    <div class="result-area">
+        <span id="result">ここに結果が出ます</span>
+    </div>
+</div>
+
+<script>
+    function generate() {
+        const s1 = document.getElementById('str1').value;
+        const s2 = document.getElementById('str2').value;
+        const resultDisplay = document.getElementById('result');
+        
+        let result = "";
+        const maxLen = Math.max(s1.length, s2.length);
+        
+        for (let i = 0; i < maxLen; i++) {
+            if (i < s1.length) result += s1[i];
+            if (i < s2.length) result += s2[i];
+        }
+        
+        resultDisplay.innerText = result || "言葉を入力してね";
+    }
+</script>
+
+</body>
+</html>
